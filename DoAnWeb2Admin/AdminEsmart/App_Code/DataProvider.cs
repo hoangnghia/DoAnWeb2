@@ -1,4 +1,6 @@
 ﻿
+
+using ESmart.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,8 +22,360 @@ namespace ESmart
             string connectionString = ConfigurationManager.ConnectionStrings["ESmart"].ToString();
             conn = new SqlConnection(connectionString);
             command = new SqlCommand("", conn);
-        } 
-       
+        }
+        public static NguoiDung LayNguoiDungDangNhap(String username, String password)
+        {
+            NguoiDung nd = null;
+            string query = String.Format("SELECT TaiKhoan, MatKhau, HoTen, MaND, GioiTinh FROM NguoiDung WHERE TaiKhoan = '" + username + "' and MatKhau = '" + password + "'  and STT = 1");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    nd = new NguoiDung();
+                    nd.TaiKhoan = reader.GetString(0);
+                    nd.MatKhau = reader.GetString(1);
+                    nd.HoTen = reader.GetString(2);
+                    nd.MaND = reader.GetInt32(3);
+                    nd.GioiTinh = reader.GetString(4);
+                    return nd;
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return null;
+        }
+        public static List<BinhLuan> LayDanhSachBinhLuanTheoMaSP(String masp)
+        {
+            List<BinhLuan> list = new List<BinhLuan>();
+            string query = String.Format("SELECT BL.MaBL, ND.HoTen, BL.NoiDung, BL.NgayBL, BL.MaSP, BL.DanhGiaSanPham FROM BinhLuan as BL, NguoiDung as ND WHERE BL.MaND = ND.MaND and BL.MaSP = '" + masp + "' and BL.STT = 1 ORDER BY NgayBL DESC");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Int32 mabinhluan = reader.GetInt32(0);
+                    String hoten = reader.GetString(1);
+                    String noidung = reader.GetString(2);
+                    String ngaybl = reader.GetString(3);
+                    String masp1 = reader.GetString(4);
+                    Int32 danhgia = reader.GetInt32(5);
+
+                    BinhLuan sp = new BinhLuan(mabinhluan, hoten, noidung, ngaybl, masp1, danhgia);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPhamTheoMaDM(int madm)
+        {
+            List<SanPham> list = new List<SanPham>();
+            string query = String.Format("SELECT MaSP, TenSP, GiaMoi, GiaCu, HinhSP, MaHSX FROM SanPham WHERE MaDM = " + madm + " and Status = 1 ORDER BY NgayThemSP DESC OFFSET 0 ROWS FETCH NEXT 4 ROWS ONLY ");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPham1()
+        {
+            List<SanPham> list = new List<SanPham>();
+            string query = String.Format("SELECT MaSP, TenSP, GiaMoi, GiaCu, HinhSP, MaHSX FROM SanPham WHERE Status = 1 ");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPhamNgauNhien()
+        {
+            List<SanPham> list = new List<SanPham>();
+            string query = String.Format("SELECT MaSP, TenSP, GiaMoi, GiaCu, HinhSP, MaHSX FROM SanPham WHERE Status = 1 ORDER BY NEWID() DESC OFFSET 0 ROWS FETCH NEXT 8 ROWS ONLY");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPhamNgauNhien2()
+        {
+            List<SanPham> list = new List<SanPham>();
+            string query = String.Format("SELECT MaSP, TenSP, GiaMoi, GiaCu, HinhSP, MaHSX FROM SanPham WHERE Status = 1 ORDER BY NEWID() DESC OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPhamMaTheoMaDanhMuc(int madm)
+        {
+            List<SanPham> list = new List<SanPham>();
+            string query = String.Format("SELECT MaSP, TenSP, GiaMoi, GiaCu, HinhSP, MaHSX FROM SanPham WHERE MaDM = "+madm+" AND Status = 1 ORDER BY NgayThemSP DESC OFFSET 0 ROWS FETCH NEXT 8 ROWS ONLY");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static SanPham LaySanPhamTheoMa(String masanpham)
+        {
+            SanPham sp = null;
+            string query = String.Format("SELECT SP.MaSP, SP.TenSP, SP.GiaCu, SP.GiaMoi, HSX.TenHSX, SP.MoTa, SP.TinhTrang, CTSP.SKU, CTSP.Model, CTSP.ManHinh, CTSP.TrongLuong, CTSP.MauSac, CTSP.BoNhoTrong, CTSP.BoNhoNgoai, CTSP.Camera, CTSP.HeDieuHanh, CTSP.LoaiPin, CTSP.CongKetNoi, CTSP.BaoHanh, SP.HinhSP, CTSP.CPU, CTSP.KichThuocManHinh, HSP.HinhAnh1, HSP.HinhAnh2, HSP.HinhAnh3, SP.MaDM FROM SanPham As SP, ChiTietSanPham as CTSP, HangSanXuat as HSX, HinhSanPham as HSP WHERE SP.MaSP = CTSP.MaSP and SP.MaHSX = HSX.MaHSX and SP.MaSP = HSP.MaSP and SP.MaSP = '" + masanpham + "'  and STT = 1");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    sp = new SanPham();
+                    sp.MaSP = reader.GetString(0);
+                    sp.TenSP = reader.GetString(1);
+                    sp.GiaCu = reader.GetInt64(2);
+                    sp.GiaMoi = reader.GetInt64(3);
+                    sp.HangSX = reader.GetString(4);
+                    sp.MoTa = reader.GetString(5);
+                    sp.TinhTrang = reader.GetString(6);
+                    sp.SKU = reader.GetString(7);
+                    sp.Model = reader.GetString(8);
+                    sp.ManHinh = reader.GetString(9);
+                    sp.TrongLuong = reader.GetString(10);
+                    sp.MauSac = reader.GetString(11);
+                    sp.BoNhoTrong = reader.GetString(12);
+                    sp.BoNhoNgoai = reader.GetString(13);
+                    sp.Camera = reader.GetString(14);
+                    sp.HeDieuHanh = reader.GetString(15);
+                    sp.LoaiPin = reader.GetString(16);
+                    sp.CongKetNoi = reader.GetString(17);
+                    sp.BaoHanh = reader.GetString(18);
+                    sp.HinhSP = reader.GetString(19);
+                    sp.CPU = reader.GetString(20);
+                    sp.KichThuocManHinh = reader.GetString(21);
+                    sp.HinhSP1 = reader.GetString(22);
+                    sp.HinhSP2 = reader.GetString(23);
+                    sp.HinhSP3 = reader.GetString(24);
+                    sp.MaDM = reader.GetString(25);
+                    return sp;
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return null;
+        }
+        public static List<DonHang> LayDanhSachDonHangTheoMaND(int maND)
+        {
+            List<DonHang> list = new List<DonHang>();
+            string query = String.Format("SELECT ID, MaND, TongTien, NgayLap, TinhTrang, LoaiThanhToan FROM DonHang where MaND = " + maND + " ORDER BY NgayLap DESC");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Int32 id = reader.GetInt32(0);
+                    Int32 mand = reader.GetInt32(1);
+                    Int64 tongtien = reader.GetInt64(2);
+                    DateTime ngaylap1 = reader.GetDateTime(3);
+                    String ngaylap = (ngaylap1.ToString("dd-MM-yyyy").ToString());
+                    String tinhtrang = reader.GetString(4);
+                    String loaithanhtoan = reader.GetString(5);
+                    DonHang sp = new DonHang(id, mand, tongtien, ngaylap, tinhtrang, loaithanhtoan);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static NguoiDung LayNguoiDungDangNhapTheoTen(String username)
+        {
+            NguoiDung nd = null;
+            string query = String.Format("SELECT HoTen, Email, DienThoai, DiaChi, ThanhPho, TaiKhoan, GioiTinh FROM NguoiDung WHERE TaiKhoan = '" + username + "' and STT = 1");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    nd = new NguoiDung();
+                    nd.HoTen = reader.GetString(0);
+                    nd.Email = reader.GetString(1);
+                    nd.SoDienThoai = reader.GetString(2);
+                    nd.DiaChi = reader.GetString(3);
+                    nd.ThanhPho = reader.GetString(4);
+                    nd.TaiKhoan = reader.GetString(5);
+                    nd.GioiTinh = reader.GetString(6);
+
+
+                    return nd;
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return null;
+        }
         public static ArrayList LayDanhMuc()
         {
             ArrayList list = new ArrayList();
@@ -49,7 +403,163 @@ namespace ESmart
 
             return list;
         }
+        public static int ThemNguoiDung(NguoiDung nd)
+        {
+            string query = String.Format("INSERT INTO NguoiDung(TaiKhoan, MatKhau, HoTen, NgaySinh, GioiTinh, DiaChi, ThanhPho, Email, DienThoai) VALUES ('" + nd.TaiKhoan + "', '" + nd.MatKhau + "', N'" + nd.HoTen + "', '" + nd.NgaySinh + "', N'" + nd.GioiTinh + "', N'" + nd.DiaChi + "', N'" + nd.ThanhPho + "', '" + nd.Email + "', '" + nd.SoDienThoai + "')");
 
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+
+        }
+        public static int CapNhatChiTietDonHang(SanPhamGioHang nd)
+        {
+            string query = String.Format("UPDATE ChiTietDonHang SET SoLuong = " + nd.SoLuong + ", DonGia = " + nd.Gia + ", ThanhTien = " + nd.ThanhTien + " WHERE ID = " + nd.ID + "");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+        }
+        public static List<SanPhamGioHang> LayDanhSachChiTietDonHangTheoMaHoaDon(int maHoaDon)
+        {
+            DonHang dh = LoadDonHangTheoMaHoaDon(maHoaDon);
+            if (dh == null)
+            {
+                return new List<SanPhamGioHang>();
+            }
+            List<SanPhamGioHang> list = new List<SanPhamGioHang>();
+            string query = String.Format("SELECT CTDH.MaDH, CTDH.ID ,SP.TenSP, CTDH.SoLuong, SP.GiaMoi, CTDH.ThanhTien, DH.TinhTrang, SP.HinhSP, SP.MaSP FROM ChiTietDonHang as CTDH, SanPham as SP, DonHang as DH Where CTDH.MaSP = SP.MaSP and DH.ID = CTDH.MaDH and DH.ID = " + maHoaDon + " and CTDH.Status = 1");
+            string ErrMsg = string.Empty;
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Int32 madonhang = reader.GetInt32(0);
+                    Int32 machitietdonhang = reader.GetInt32(1);
+                    String tensanpham = reader.GetString(2);
+                    Int32 soluong = reader.GetInt32(3);
+                    Int64 GiaSanPham = reader.GetInt64(4);
+                    Int64 thanhTien = reader.GetInt64(5);
+                    String tinhtrang = reader.GetString(6);
+                    String hinhsp = reader.GetString(7);
+                    String masanpham = reader.GetString(8);
+
+                    SanPhamGioHang sp = new SanPhamGioHang(madonhang, machitietdonhang, tensanpham, soluong, GiaSanPham, thanhTien, tinhtrang, hinhsp, masanpham);
+                    sp.TinhTrang = dh.TinhTrang;
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrMsg = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static DonHang LoadDonHangTheoMaHoaDon(int mahoadon)
+        {
+            DonHang nd = null;
+            string query = String.Format("SELECT TongTien, TinhTrang FROM DonHang WHERE ID = " + mahoadon + " and Status = 1");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    nd = new DonHang();
+                    nd.TongTien = reader.GetInt64(0);
+                    nd.TinhTrang = reader.GetString(1);
+                    return nd;
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return null;
+        }
+        public static int XoaChiTietDonHang(int id)
+        {
+            string query = String.Format("UPDATE ChiTietDonHang SET Status = 0 WHERE ID = " + id + "");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+        }
+        public static int CapNhatDonHang(Int64 tongtien, int madonhang)
+        {
+            string query = String.Format("UPDATE DonHang SET TongTien = " + tongtien + " WHERE ID = " + madonhang + "");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+        }
+        
         public static void InsertDanhMuc(string tendm)
         {
             conn.Open();
@@ -148,7 +658,6 @@ namespace ESmart
                     Int64 giamoi = reader.GetInt64(2);
                     Int64 giacu = reader.GetInt64(3);                    
                     string hangsx = reader.GetString(4);
-                    
                     string madm = reader.GetString(5);
                     string hinhsp = reader.GetString(6);
                     string mota = reader.GetString(7);
@@ -223,7 +732,7 @@ namespace ESmart
         public static void InsertSanPham(string masp, string tensp, double giacu, double giamoi, string hangsx, string madm, string hinhsp, string mota, string tinhtrang, int stt, string ngaythem)
         {
             conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO SanPham(MaSP,TenSP,GiaCu,GiaMoi,MaHSX,MaDM,HinhSP,MoTa,TinhTrang,Status,NgayThemSP) values('" + masp + "','" + tensp + "'," + giacu + "," + giamoi + ",'" + hangsx + "','" + madm + "','" + hinhsp + "','" + mota + "','" + tinhtrang + "', " + stt + ",'"+ ngaythem +"')", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO SanPham(MaSP,TenSP,GiaCu,GiaMoi,MaHSX,MaDM,HinhSP,MoTa,TinhTrang,Status,NgayThemSP) values('" + masp + "','" + tensp + "'," + giacu + "," + giamoi + ",'" + hangsx + "','" + madm + "','" + hinhsp + "',N'" + mota + "','" + tinhtrang + "', " + stt + ",'"+ ngaythem +"')", conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -460,7 +969,7 @@ namespace ESmart
                 while (reader.Read())
                 {
                     int madh = reader.GetInt32(1);
-                    string makh = reader.GetString(2);
+                    int makh = reader.GetInt32(2);
                     double tongtien = reader.GetDouble(3);
                     DateTime ngaylap1 = reader.GetDateTime(4);
                     string ngaylap = (ngaylap1.ToString("yyyy-MM-dd").ToString()); 
@@ -623,6 +1132,7 @@ namespace ESmart
         }
         public static void UpdateSlide1(string ma, string hinh, string link, int stt)
         {
+            
             conn.Open();
             string sql = "UPDATE Slide SET HinhAnh = '"+ hinh +"', Link = '"+ link +"', Status = "+ stt +" WHERE MaSL = '"+ ma +"'";
             SqlCommand cmd = new SqlCommand(sql, conn);
@@ -1146,7 +1656,372 @@ namespace ESmart
             cn.ExecuteNonQuery();
             conn.Close();
         }
+        public static int ThemChiTietDonHang(ChiTietDonHang ct)
+        {
+            string query = String.Format("INSERT INTO ChiTietDonHang(MaDH, MaSP, SoLuong, DonGia, ThanhTien) VALUES (" + ct.MaDH + ", '" + ct.MaSP + "', " + ct.SoLuong + ", " + ct.DonGia + ", " + ct.ThanhTien + ")");
 
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+
+        }
+        public static int DoiMatKhauTheoMaNguoiDung(string matkhau, int mand)
+        {
+            string query = String.Format("UPDATE NguoiDung SET MatKhau = '" + matkhau + "' WHERE MaND = " + mand + "");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+        }
+        public static int DoiThongTinTheoMaNguoiDung(NguoiDung nd)
+        {
+            string query = String.Format("UPDATE NguoiDung SET HoTen = N'" + nd.HoTen + "', Email = '" + nd.Email + "', NgaySinh = '" + nd.NgaySinh + "', GioiTinh = N'" + nd.GioiTinh + "', DiaChi = N'" + nd.DiaChi + "', ThanhPho = N'" + nd.ThanhPho + "', DienThoai = '" + nd.SoDienThoai + "' WHERE MaND = " + nd.MaND + "");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+        }
+        public static int ThemThacMac(ThacMac tm)
+        {
+            string query = String.Format("INSERT INTO ThacMac(Ten, Email, TieuDe, NoiDung) VALUES (N'" + tm.Ten + "', N'" + tm.Email + "', N'" + tm.TieuDe + "', N'" + tm.NoiDung + "')");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+
+        }
+        public static ArrayList LayDanhSachSanPhamTheoTuKhoa(String keyword)
+        {
+            ArrayList list = new ArrayList();
+            string query = String.Format("SELECT SanPham.MaSP, SanPham.TenSP, SanPham.GiaMoi, SanPham.GiaCu, SanPham.HinhSP, SanPham.MaHSX, ChiTietSanPham.Model, ChiTietSanPham.ManHinh, ChiTietSanPham.Camera, ChiTietSanPham.HeDieuHanh, ChiTietSanPham.ManHinh, ChiTietSanPham.LoaiPin, ChiTietSanPham.BoNhoTrong, SanPham.TinhTrang FROM SanPham, ChiTietSanPham WHERE SanPham.MaSP = ChiTietSanPham.MaSP and (SanPham.TenSP LIKE '%" + keyword + "%' OR SanPham.MaHSX LIKE '%" + keyword + "%')");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static ArrayList LayDanhSachSanPhamTheoTuKhoaDanhMuc(String keyword, String madanhmuc)
+        {
+            ArrayList list = new ArrayList();
+            string query = String.Format("SELECT MaSP, TenSP, GiaMoi, GiaCu, HinhSP, MaHSX FROM SanPham, DanhMuc WHERE SanPham.MaDM = DanhMuc.MaDM and SanPham.TenSP LIKE '%" + keyword + "%' and DanhMuc.MaDM = '" + madanhmuc + "'");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPhamLoadMoreBanChay(int page)
+        {
+            int totalPerPay = 4;
+            List<SanPham> list = new List<SanPham>();
+            int startLiMit = totalPerPay * page;
+
+            string query = String.Format("SELECT SP.MaSP, SP.TenSP, SP.GiaMoi, SP.GiaCu, SP.HinhSP, SP.MaHSX  FROm SanPham As SP, DonHang as DH, ChiTietDonHang as CTDH	WHERE SP.MaSP = CTDH.MaSP and DH.ID = CTDH.MaDH and DH.TinhTrang LIKE N'Chưa thanh toán' ORDER BY NgayThemSP DESC OFFSET " + startLiMit + " ROWS FETCH NEXT " + totalPerPay + " ROWS ONLY");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPhamLoadMoreMoiNhat(int page)
+        {
+            int totalPerPay = 4;
+            List<SanPham> list = new List<SanPham>();
+            int startLiMit = totalPerPay * page;
+
+            string query = String.Format("SELECT MaSP, TenSP, GiaMoi, GiaCu, HinhSP, MaHSX FROM SanPham WHERE Status = 1 ORDER BY NgayThemSP DESC OFFSET " + startLiMit + " ROWS FETCH NEXT " + totalPerPay + " ROWS ONLY");
+            string qur = String.Format("");
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static List<SanPham> LayDanhSachSanPhamLoadMoreNoiBat(int page)
+        {
+            int totalPerPay = 4;
+            List<SanPham> list = new List<SanPham>();
+            int startLiMit = totalPerPay * page;
+
+            string query = String.Format("SELECT SP.MaSP, SP.TenSP, SP.GiaMoi, SP.GiaCu, SP.HinhSP, SP.MaHSX  FROm SanPham As SP, DonHang as DH, ChiTietDonHang as CTDH	WHERE SP.MaSP = CTDH.MaSP and DH.ID = CTDH.MaDH and DH.TinhTrang LIKE N'Chưa thanh toán' ORDER BY NgayThemSP DESC OFFSET " + startLiMit + " ROWS FETCH NEXT " + totalPerPay + " ROWS ONLY");
+            string qur = String.Format("");
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string masp = reader.GetString(0);
+                    string tensp = reader.GetString(1);
+                    Int64 giamoi = reader.GetInt64(2);
+                    Int64 giacu = reader.GetInt64(3);
+                    string hinhsp = reader.GetString(4);
+                    string hangsx = reader.GetString(5);
+                    SanPham sp = new SanPham(masp, tensp, giamoi, giacu, hinhsp, hangsx);
+                    list.Add(sp);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+        public static NguoiDung LayNguoiDungDangNhapTheoEMail(String email)
+        {
+            NguoiDung nd = null;
+            string query = String.Format("SELECT Email, HoTen, MaND FROM NguoiDung WHERE Email = '" + email + "' and STT = 1");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    nd = new NguoiDung();
+                    nd.Email = reader.GetString(0);
+                    nd.HoTen = reader.GetString(1);
+                    nd.MaND = reader.GetInt32(2);
+                    return nd;
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return null;
+        }
+        public static int ThemBinhLuan(BinhLuan bl)
+        {
+            string query = String.Format("INSERT INTO BinhLuan(MaND, NoiDung, NgayBL, MaSP) VALUES (" + bl.MaND + ", N'" + bl.NoiDung + "', '" + bl.NgayBL + "', '" + bl.MaSP + "')");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+        }
+        public static int ThemBaoLoi(BaoLoi nd)
+        {
+            string query = String.Format("INSERT INTO LoiHeThong(DuongDan, NoiDung, NgayBao) VALUES ('" + nd.DuongDan + "', N'" + nd.NoiDung + "', '" + nd.NgayBao + "')");
+
+            try
+            {
+                conn.Open();
+                command.CommandText = query;
+
+                return command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return 0;
+
+        }
+        public static Boolean ThemDonHang1(ref DonHang dh)
+        {
+            string query = String.Format("INSERT INTO DonHang(MaND, TongTien, NgayLap, LoaiThanhToan) VALUES (" + dh.MaND + ", " + dh.TongTien + ", '" + dh.NgayLap + "', N'" + dh.LoaiThanhToan + "')");
+            Boolean kq = false;
+            try
+            {
+                conn.Open();
+                command.CommandText = query;// +" SELECT SCOPE_IDENTITY() AS ID";
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    query = "SELECT SCOPE_IDENTITY() AS ID";
+                    command.CommandText = query;
+                    Object idOb = command.ExecuteScalar();
+                    dh.ID = int.Parse(idOb.ToString());
+                    kq = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                kq = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return kq;
+
+        }
         public static void ThemDonHang(int mand, long tongtien, DateTime ngaylap, string tinhtrang, string loaithanhtoan, int status)
         {
             conn.Open();
@@ -1167,7 +2042,7 @@ namespace ESmart
             return tb;
         }
 
-        public static void XoaChiTietDonHang(int madh)
+        public static void XoaChiTietDonHang1(int madh)
         {
             conn.Open();
             string sql = string.Format("update ChiTietDonHang set Status = 0 where MaDH = '" + madh + "'");
@@ -1227,7 +2102,16 @@ namespace ESmart
             conn.Close();
             return tb;
         }
-
+        public static DataTable LayDonHangChoDonHangTheoMa1(int ma)
+        {
+            DataTable tb = new DataTable();
+            string sql = string.Format("select * from DonHang where ID = '" + ma + "' and Status = 1");
+            conn.Open();
+            SqlDataAdapter ds = new SqlDataAdapter(sql, conn);
+            ds.Fill(tb);
+            conn.Close();
+            return tb;
+        }
         public static DataTable LayDonHangChoDonHangTheoMa(int id)
         {
             DataTable tb = new DataTable();
@@ -1328,5 +2212,68 @@ namespace ESmart
             cn.ExecuteNonQuery();
             conn.Close();
         }
+        // truy vẫn cho phân tran Duoc
+        public static DataTable LayBinhLuanChoPhanTrang()
+        {
+            DataTable tb = new DataTable();
+            string sql = string.Format("select DISTINCT bl.MaBL as mabinhluan, bl.MaND as mand, bl.NgayBL as ngaybinhluan, SUBSTRING(bl.NoiDung, 1, 15) + '.....' as noidung, nd.*, sp.* from BinhLuan bl, NguoiDung nd, SanPham sp where bl.MaND = nd.MaND and bl.MaSP = sp.MaSP and bl.STT = 1");
+            // conn.Open();
+            SqlDataAdapter ds = new SqlDataAdapter(sql, conn);
+            ds.Fill(tb);
+            conn.Close();
+            return tb;
+        }
+        public static DataTable LayDonHangChoPhanTrang()
+        {
+            DataTable tb = new DataTable();
+            string sql = string.Format("select DISTINCT nd.*,dh.* from NguoiDung nd, DonHang dh where dh.MaND = nd.MaND and dh.Status = 1");
+            conn.Open();
+            SqlDataAdapter ds = new SqlDataAdapter(sql, conn);
+            ds.Fill(tb);
+            conn.Close();
+            return tb;
+        }
+
+        public static DataTable LayDonHangTheoTinhTrangChoPhanTrang(string ttrang)
+        {
+            DataTable tb = new DataTable();
+            string sql = string.Format("select DISTINCT nd.*,dh.* from NguoiDung nd, DonHang dh where dh.MaND = nd.MaND and dh.Status = 1 and dh.TinhTrang = N'" + ttrang + "'");
+            conn.Open();
+            SqlDataAdapter ds = new SqlDataAdapter(sql, conn);
+            ds.Fill(tb);
+            conn.Close();
+            return tb;
+        }
+        public static DataTable LayNguoiDungChoPhanTrang()
+        {
+            DataTable tb = new DataTable();
+            string sql = string.Format("select * from NguoiDung where STT = 1");
+            conn.Open();
+            SqlDataAdapter ds = new SqlDataAdapter(sql, conn);
+            ds.Fill(tb);
+            conn.Close();
+            return tb;
+        }
+         public static DataTable LayHangSXChoPhanTrang()
+        {
+            DataTable tb = new DataTable();
+            string sql = string.Format( "SELECT * FROM HangSanXuat WHERE Status = 1");
+            conn.Open();
+            SqlDataAdapter ds = new SqlDataAdapter(sql, conn);
+            ds.Fill(tb);
+            conn.Close();
+            return tb;
+        }
+         public static DataTable LayLoiHeThongChoPhanTrang()
+         {
+             DataTable tb = new DataTable();
+             string sql = string.Format("select * from LoiHeThong where STT =1");
+             conn.Open();
+             SqlDataAdapter ds = new SqlDataAdapter(sql, conn);
+             ds.Fill(tb);
+             conn.Close();
+             return tb;
+         }
+       
     }
 }

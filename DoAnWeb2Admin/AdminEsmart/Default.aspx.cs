@@ -1,64 +1,80 @@
-﻿
+﻿using ESmart;
 using System;
-using System.Data;
-using System.Configuration;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Net.Mail;
-using System.Net;
 
-public partial class _Default : System.Web.UI.Page
+public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            FillPage();
+        }
     }
-
-    protected void btnSubmit_Click(object sender, EventArgs e)
+    private void FillPage()
     {
-            //MailMessage objMail = new MailMessage("kduan2704@gmail.com", "kduan274@gmail.com", "kikiki", "lololo");
-            //NetworkCredential objNC = new NetworkCredential("KimDuan", "hangngoc");
-            //SmtpClient objsmtp = new SmtpClient("smtp.live.com", 587); // for hotmail
-            //objsmtp.EnableSsl = true;
-            //objsmtp.Credentials = objNC;
-            //objsmtp.Send(objMail);
-            //MailMessage mail = new MailMessage();
-            //mail.From = new MailAddress("kduan2704@gmail.com");
-            //string msgSubject = "Test";
-            //string msgMessage = "123456";
-            //mail.To.Add("kduan274@gmail.com");
-            //mail.Subject = msgSubject.ToString();
-            //mail.Body = msgMessage.ToString();
-            //mail.IsBodyHtml = true;
 
-            //SmtpClient SmtpServer = new SmtpClient("smtp.live.com", 587);
-            //SmtpServer.Credentials = new NetworkCredential("kduan2704@gmail.com", "hangngoc");
-            //SmtpServer.EnableSsl = true;
-            //SmtpServer.UseDefaultCredentials = false;
-            //SmtpServer.Send(mail);
-            MailMessage mail = new MailMessage("kduan274@gmail.com", "kduan2704@gmail.com");
-            SmtpClient client = new SmtpClient();
-            client.Port = 587;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+        List<SanPham> lisSP = new List<SanPham>();
+        List<SanPham> lisSPApple = new List<SanPham>();
+        List<SanPham> lisSPSamSung = new List<SanPham>();
+        List<SanPham> lisSPNokia = new List<SanPham>();
+        List<SanPham> lisSPHTC = new List<SanPham>();
+        
 
-            client.Host = "smtp.gmail.com";
-            mail.Subject = "lolo";
-            mail.Body = "Nghĩa là thằng gay";
-            mail.IsBodyHtml = true;
-            client.UseDefaultCredentials = false;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.EnableSsl = true;
 
-            NetworkCredential NetworkCred = new NetworkCredential();
-            NetworkCred.UserName = "kduan274@gmail.com";
-            NetworkCred.Password = "hangngoc";
-            client.UseDefaultCredentials = true;
-            client.Credentials = NetworkCred;
-            client.Send(mail);
-            lblPassword.Text = "<b>Mail Successfully Sent..!!</b>";
+        ArrayList listDM = new ArrayList();
+        if (!IsPostBack)
+        {
+
+            // Lấy danh sách sản phẩm Bán chạy
+            lisSP = DataProvider.LayDanhSachSanPhamLoadMoreBanChay(0);
+            ListView2.DataSource = lisSP;
+            ListView2.DataBind();
+
+            // Lấy danh sách sản phẩm Mới nhất
+            lisSP = DataProvider.LayDanhSachSanPhamLoadMoreMoiNhat(0);
+            listSanPhaMoi.DataSource = lisSP;
+            listSanPhaMoi.DataBind();
+
+            // Lấy danh sách sản phẩm Nổi bật
+            lisSP = DataProvider.LayDanhSachSanPhamLoadMoreNoiBat(0);
+            listSanPhanNoiBat.DataSource = lisSP;
+            listSanPhanNoiBat.DataBind();
+
+            // Lấy danh sách sản phẩm Ngẫu nhiên
+            lisSP = DataProvider.LayDanhSachSanPhamNgauNhien();
+            listSanPhamNgauNhien.DataSource = lisSP;
+            listSanPhamNgauNhien.DataBind();
+            // Lấy danh sách sản phẩm Apple
+            lisSPApple = DataProvider.LayDanhSachSanPhamMaTheoMaDanhMuc(1);
+            listSanPhamApple.DataSource = lisSPApple;
+            listSanPhamApple.DataBind();
+            // Lấy danh sách sản phẩm SamSung
+            lisSPSamSung = DataProvider.LayDanhSachSanPhamMaTheoMaDanhMuc(2);
+            listSanPhamSamSung.DataSource = lisSPSamSung;
+            listSanPhamSamSung.DataBind();
+            // Lấy danh sách sản phẩm Nokia
+            lisSPNokia = DataProvider.LayDanhSachSanPhamMaTheoMaDanhMuc(3);
+            listSPNoKia.DataSource = lisSPNokia;
+            listSPNoKia.DataBind();
+            // Lấy danh sách sản phẩm HTC
+            lisSPHTC = DataProvider.LayDanhSachSanPhamMaTheoMaDanhMuc(4);
+            listSPHTC.DataSource = lisSPHTC;
+            listSPHTC.DataBind();
+            // Lấy danh mục
+
+            listDM = DataProvider.LayDanhMuc();
+            ListView1.DataSource = listDM;
+
+            ListView1.DataBind();
+
+
+        }
+
     }
 }

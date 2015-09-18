@@ -9,12 +9,13 @@ using System.Web;
 public class DanhMuc
 {
     public int ID { get; set; }
+    public int MaDM { get; set; } 
     public string TenDM { get; set; }
     public int Status { get; set; }
 
     public DanhMuc(int id, string tendm, int status)
     {
-        ID = id;
+        MaDM = id;
         TenDM = tendm;
         Status = status;
     }

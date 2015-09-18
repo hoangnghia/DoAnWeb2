@@ -18,7 +18,7 @@ public class NguoiDung
     public string DiaChi { get; set; }
     public string ThanhPho { get; set; }
     public string Email { get; set; }
-    public string DienThoai { get; set; }
+    public string SoDienThoai { get; set; }
     public int STT { get; set; }
     public NguoiDung(int mand, string quyen, string taikhoan, string matkhau, string hoten, String ngaysinh, string gioitinh, string diachi, string thanhpho,string email, string dienthoai, int stt)
     {
@@ -32,7 +32,7 @@ public class NguoiDung
         DiaChi = diachi;
         ThanhPho = thanhpho;
         Email = email;
-        DienThoai = dienthoai;
+        SoDienThoai = dienthoai;
         STT = stt;
     }
     public NguoiDung(string quyen, string gioitinh)
