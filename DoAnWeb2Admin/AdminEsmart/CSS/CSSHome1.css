@@ -1,0 +1,1008 @@
+﻿.loginwrapper {
+  width: 400px;
+  margin: 80px auto 0 auto;
+}
+.zindex100 {
+  z-index: 100;
+}
+.logintitle {
+  padding: 15px;
+  text-transform: uppercase;
+  line-height: 21px;
+  border: 3px solid #9E2323;
+  font-size: 18px;
+  border-bottom: 0;
+  -moz-border-radius: 2px 2px 0 0;
+  border-radius: 10px 10px 0 0;
+  color: #666;
+}
+.logintitle span.subtitle {
+  font-size: 12px;
+  font-weight: normal;
+  display: block;
+  margin-left: 32px;
+  text-transform: none;
+  color: #999;
+}
+.loginwrapperinner {
+  padding: 20px;
+  background: #444;
+  -moz-border-radius: 0 0 2px 2px;
+   -webkit-border-radius: 0 0 10px 10px;
+     margin-top: -12px;
+}
+.loginwrapper p {
+    height: 30px;
+    margin: 4px 0;
+}
+.loginwrapper p:first-child {
+  margin-top: 0;
+}
+.loginwrapper input {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+   -webkit-border-radius: 8px;
+  box-sizing: border-box;
+  padding: 10px;
+  min-height: 44px;
+  font-size: 14px !important;
+  border: 0;
+  color: #999;
+  padding-left: 30px;
+}
+.inputusername {
+  background: #eee url(../images/username.png) no-repeat 8px 12px;
+}
+.inputpassword {
+  background: #eee url(../images/password.png) no-repeat 8px 12px;
+}
+.btnDangKi {
+    background-color: #217662;
+    cursor: pointer;
+}
+.btnDangKi :hover {
+    background-color:#a98f15;
+}
+.lbthongbao{
+    margin-top: 22px;
+  width: 360px;
+  height: 24px;
+  margin-left: 12px;
+  color: rgb(223, 4, 4);
+}
+.forgot{
+    width:300px;
+    height: 40px;
+    color:#3D6ADF;
+    margin-top: 40px;
+}
+/*---------------danh mục----------------*/
+.headerDM {
+    margin-left: 25px;
+  margin-top: 24px;
+  height: 43px;
+}
+.contentDM {
+    margin-left: 157px;
+}
+/*------------------home------------------*/
+.contentHome {
+  border: 3px solid;
+  border-radius: 11px;
+  width: 1070px;
+  min-height: 200px;
+  overflow: hidden;
+  background-color: palegoldenrod;
+}
+.content1 {
+   width: 190px;
+  height: 180px;
+  float: left;
+  margin: 10px;
+   
+}
+.SanPham {
+  height: 146px;
+  width: 146px;
+  border: 2px solid #9E2323;
+  -webkit-border-radius: 69px;
+  margin: 26px;
+}
+.icon {
+   width: 91px;
+  height: 21px;
+  float: left;
+  padding: 28px;
+  text-align: center;
+}
+.icon a {
+   text-decoration: none;
+    } 
+.SanPham:hover {
+    background-color:#c2a1a1;
+    border-radius: 30px;
+    font-size: 21px;
+    cursor:pointer;
+}
+.icon a:link { 
+text-decoration: none; 
+} 
+.data{
+    border:2px solid red;
+    width:500px;
+    height:200px;
+}
+.contentFooter{
+    border-top-style: groove;
+  height: auto;
+}
+.styleheaderDonHang {
+  border: 2px solid;
+  width: 680px;
+  height: 30px;
+  text-align: right;
+  margin-top: 44px;
+}
+.styleCot1 {
+  border-right-style: groove;
+  float: left;
+  height: 30px;
+  width: 91px;
+  text-align: center;
+}
+.styleCot2 {
+  text-align: center;
+  border-right-style: groove;
+  width: 148px;
+  height: 30px;
+  float: left;
+}
+.styleCot3 {
+  text-align: center;
+  height: 35px;
+  border-right-style: groove;
+  width: 190px;
+  height: 30px;
+  float: left;
+}
+.styleCot4 {
+  text-align: center;
+  border-right-style: groove;
+  width: 167px;
+  height: 30px;
+  float: left;
+}
+.styleCot5 {
+  float: left;
+  height: 30px;
+  width: 70px;
+  text-align: center;
+}
+.contentFooterLert{
+    width: 681px;
+    float: left;
+    border:3px solid rgb(47, 59, 181);
+  border-radius: 10px;
+}
+.contentFooterRight{
+    width: 382px;
+  float: right; 
+  border: 3px solid rgb(110, 35, 17);
+  border-radius: 10px;
+}
+.DonHang {
+    width: 148px;
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  border-bottom-style: double;
+  margin: 30px;
+}
+.styleCot6 {
+  border-right-style: groove;
+  float: left;
+  border-bottom-style: groove;
+  height: 33px;
+  width: 92px;
+  text-align: center;
+}
+.styleCot7 {
+  text-align: center;
+  border-bottom-style: groove;
+  border-right-style: groove;
+  width: 148px;
+  height: 33px;
+  float: left;
+}
+.styleCot8 {
+  text-align: center;
+  height: 35px;
+  border-bottom-style: groove;
+  border-right-style: groove;
+  width: 190px;
+  height: 33px;
+  float: left;
+}
+.styleCot9 {
+  text-align: center;
+  border-right-style: groove;
+  width: 167px;
+  height: 33px;
+  border-bottom-style: groove;
+  float: left;
+}
+.styleCot10 {
+  float: left;
+  height: 33px;
+  width: 70px;
+  border-bottom-style: groove;
+  text-align: center;
+}
+/*tran admin dang sx*/
+#tieudechucnang {
+    border: 1px solid;
+    height: 30px;
+}
+#tieude{
+     /*border: 1px solid;*/
+    border: 1px solid;
+  min-height: 30px;
+  width: 1076px;
+  overflow: hidden;
+  text-align: center;
+  background-color: dimgrey;
+  font-weight: bold;
+  color: white;
+}
+#tieude1{
+     /*border: 1px solid;*/
+    border: 1px solid;
+  min-height: 30px;
+  width: 1076px;
+  overflow: hidden;
+  text-align: center;
+}
+#tieude1:hover{
+     /*border: 1px solid;*/
+    border: 1px solid;
+  min-height: 30px;
+  width: 1076px;
+  overflow: hidden;
+  text-align: center;
+    background-color:seagreen;
+}
+#tentieude{
+    float: left;
+}
+#chucnangthem{
+    float: left;
+    margin-right:20px;
+}
+#chucnangxoa{
+    float:left;
+    margin-right:70px;
+}
+
+#cot0{
+    float: left;
+   
+    width:10%;
+    border-right-style: outset;
+}
+#cot1{
+    float: left;
+    border-right-style: outset;
+     width:15%;
+}
+#cot2{
+    float: left;
+   border-right-style: outset;
+    width:28%;
+}
+#cot3{
+    float: left;
+    border-right-style: outset;
+     width:20%;
+}
+#cot4{
+    float: left;
+     border-right-style: outset;
+     width:15%;
+}
+#cot5{
+    float: left;
+    border-right-style: outset;
+     width:10%;
+}
+#themxoa{
+    float:right;
+}
+#tentieude {
+  float: left;
+  font-weight: bolder;
+  color: royalblue;
+  /* font-family: -webkit-body; */
+  margin-top: 6px;
+  margin-left: 14px;
+}
+#chucnangthem {
+  float: left;
+  margin-right: 20px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}
+/*#chucnangxoa {
+  float: left;
+  margin-right: 70px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}*/
+#chucnangthem a,#chucnangxoa a{
+  text-decoration:none;
+  color: black;
+}
+#chucnangthem:hover {
+  float: left;
+  margin-right: 20px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: blue;
+  font-style: oblique;
+}
+
+#chucnangxoa:hover {
+  /*float: left;
+  margin-right: 70px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: blue;
+  font-style: oblique;*/
+}
+#ContentPlaceHolder1_Button1{
+  float: left;
+  margin-right: 70px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}
+#ContentPlaceHolder1_Button1:hover{
+    /*border: none;
+ 
+  height: 20px;
+  width: 53px;
+ 
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;*/
+   background-color: blue; 
+  font-style: oblique;
+}
+/*trang thêm*/
+#cotmahangsx{
+    float: left;
+   
+    width:25%;
+    border-right-style: outset;
+}
+#cottenhsx{
+    float: left;
+    border-right-style: outset;
+     width:30%;
+}
+#cothinhhangsx{
+    float: left;
+   border-right-style: outset;
+    width:25%;
+}
+#cotthemhangsx{
+    float: left;
+   border-right-style: outset;
+    width:18%;
+}
+#ContentPlaceHolder1_btnThemHangSX{
+     height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+  margin-top: 5px;
+}
+#ContentPlaceHolder1_btnThemHangSX:hover{
+     height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: blue;
+  font-style: oblique;
+  margin-top: 5px;
+}
+#ContentPlaceHolder1_txtTenHangSX, #ContentPlaceHolder1_txtMaHangSX, #ContentPlaceHolder1_uploadhinh{
+    margin-top:5px;
+}
+#ContentPlaceHolder1_lbthongbao{
+  color: red;
+  font-style: italic;
+}
+/*trang sua hang sx*/
+.cltxtmahangsx, .cltxttenhangsx, .cltxtstatus{
+    margin-top:40px;
+    width:90%;
+    border:2px solid #456879;
+	border-radius:10px;
+    height: 30px;
+}
+.clbtncapnhap{
+    float: left;
+  margin-left: 30px;
+  margin-top: 41px;
+  height: 33px;
+  width: 90px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}
+.clbtncapnhap:hover{
+    float: left;
+  margin-left: 30px;
+  margin-top: 41px;
+  height: 33px;
+  width: 90px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: blue;
+  font-style: oblique;
+}
+.clbbtnhuy{
+    float: left;
+  margin-left: 25px;
+  margin-top: 41px;
+  height: 33px;
+  width: 90px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}
+.clbbtnhuy:hover{
+    float: left;
+  margin-left: 25px;
+  margin-top: 41px;
+  height: 33px;
+  width: 90px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: blue;
+  font-style: oblique;
+}
+#cot4suahangsx{
+    float: left;
+     border-right-style: outset;
+     width:25%;
+}
+/*trang quan ly nguoi dung*/
+#cot0nguoidung
+{
+    float: left;
+    width: 6%;
+    border-right-style: outset;
+}
+#cot1nguoidung
+{
+    float: left;
+    width: 10%;
+    border-right-style: outset;
+}
+#cot2nguoidung
+{
+    float: left;
+    width: 13%;
+    border-right-style: outset;
+}
+#cot3nguoidung
+{
+    float: left;
+    width: 24%;
+    border-right-style: outset;
+}
+#cot4nguoidung {
+    float: left;
+    width: 17%;
+    border-right-style: outset;
+}
+#cot5nguoidung
+{
+    float: left;
+    width: 18%;
+    border-right-style: outset;
+}
+#cot6nguoidung
+{
+    float: left;
+    width: 10%;
+    border-right-style: outset;
+}
+.clbtnxoanguoidung
+{
+    float: left;
+  margin-right: 70px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}
+/*trang them nguoi dung*/
+#phanthemnguoidung{
+    margin-left: 25%;
+    color: blue;
+    font-weight: bold;
+    font-size: 20px;
+}
+.cldrlistquyen{
+    margin-left: 10%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.cltxttaikhoan{
+    margin-left: 5%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.cltxthoten{
+    margin-left: 9%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.cltxtngaysinh{
+    margin-left: 7%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.clcldlich{
+   
+    /* width: 90%; */
+   
+}
+#lich{
+  margin-left:19%;
+}
+.cltxadiachi{
+    margin-left: 10%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.cltxtthanhpho{
+    margin-left: 6%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.cltxtemail{
+    margin-left: 11%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.cltxtdienthoai{
+    margin-left: 7%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.clbtnthemnguoidung{
+    float: left;
+  /* margin-right: 44px; */
+  margin-top: 18px;
+  height: 40px;
+  width: 87px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+  margin-left: 45%;
+}
+.clbtnthemnguoidung:hover{
+    float: left;
+  /* margin-right: 44px; */
+  margin-top: 18px;
+  height: 40px;
+  width: 87px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: blue;
+  font-style: oblique;
+  margin-left: 45%;
+}
+.cldrlgioitinh{
+      margin-left: 10%;
+    width: 35%;
+    margin-top: 7px;
+    /* width: 90%; */
+    border: 2px solid #456879;
+    border-radius: 10px;
+    height: 30px;
+}
+.cllblthongbao{
+    float: left;
+  margin-left: -52%;
+}
+/**trang sua nguoi dung*/
+.cldtlsnguoidung{
+    width:100%;
+}
+#idstaikhoan, #idshoten, #idsngaysinh, #idsgioitinh, #idsdiachi, #idsthanhph, #idsemail, #idsdienthoai, #idsquyen, #idsumand{
+    width: 100%;
+  margin-left: 15%;
+  margin-top:20px;
+}
+#chu{
+    width: 20%;
+  float: left;
+  height: 30px;
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+  /*margin-top: 5px;*/
+}
+#thongtin{
+    Height: 30px;
+}
+.cltxtstaikhoan{
+    margin-left: 7%; 
+  width: 35%;
+  /* margin-top: 7px; */
+  /* width: 90%; */
+  border: 2px solid #456879;
+  border-radius: 10px;
+  height: 30px;
+}
+.cltxtshoten{
+      margin-left: 7%; 
+  width: 35%;
+  /* margin-top: 7px; */
+  /* width: 90%; */
+  border: 2px solid #456879;
+  border-radius: 10px;
+  height: 30px;
+}
+.cltxtsngaysinh, .cldrlsgioitinh, .cltxasdiachi, .cltxtsthanhpho, .cltxtsemail, .cltxtsdienthoai, .cldrlistsquyen, .cstxtsmand{
+     margin-left: 7%; 
+  width: 35%;
+  /* margin-top: 7px; */
+  /* width: 90%; */
+  border: 2px solid #456879;
+  border-radius: 10px;
+  height: 30px;
+}
+#lichsuanguoidung{
+    margin-left:345px
+}
+/*------------------trang quan ly don hang---------------------------*/
+#toanbo{
+    width:100%;
+}
+.cldtlstdonhang{
+    width:100%;
+}
+#idphannoidung{
+    width:100%;
+   
+}
+#idmadonhang{
+     margin-left:15%;
+    margin-top: 20px;
+}
+#idmadonhang #asua{
+    margin-left: 17%;
+    font-size: 25px;
+}
+#chudh{
+    width: 20%;
+  float: left;
+  height: 30px;
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+}
+#thongtindh{
+
+}
+.cllblmadonhang{
+    margin-left: 7%;
+  width: 35%;
+  /* margin-top: 7px; */
+  /* width: 90%; */
+  border: 2px solid #456879;
+  border-radius: 10px;
+  height: 30px;
+}
+/*trâng them don hon */
+#lichdh{
+    margin-left: 30%;
+}
+.clbtnludonhang{
+    float: left;
+  /* margin-right: 44px; */
+  margin-top: 18px;
+  height: 40px;
+  width: 87px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+  margin-left: 25%;
+}
+.clbtnxoanguoidung:hover{
+     float: left;
+  margin-right: 70px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: blue;
+  font-style: oblique;
+}
+.clbtnthanhtoandonhang{
+    float: left;
+  margin-left: -58px;
+  margin-top: 5px;
+  height: 20px;
+  width: 91px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}
+/*trang dang nhap*/
+.loginwrapper {
+  width: 400px;
+  margin: 80px auto 0 auto;
+}
+.zindex100 {
+  z-index: 100;
+}
+.logintitle {
+  padding: 15px;
+  text-transform: uppercase;
+  line-height: 21px;
+  border: 3px solid #9E2323;
+  font-size: 18px;
+  border-bottom: 0;
+  -moz-border-radius: 2px 2px 0 0;
+  border-radius: 10px 10px 0 0;
+  color: #666;
+}
+.logintitle span.subtitle {
+  font-size: 12px;
+  font-weight: normal;
+  display: block;
+  margin-left: 32px;
+  text-transform: none;
+  color: #999;
+}
+.loginwrapperinner {
+  padding: 20px;
+  background: #444;
+  -moz-border-radius: 0 0 2px 2px;
+   -webkit-border-radius: 0 0 10px 10px;
+     margin-top: -12px;
+}
+.loginwrapper p {
+    height: 30px;
+    margin: 4px 0;
+}
+.loginwrapper p:first-child {
+  margin-top: 0;
+}
+.loginwrapper input {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+   -webkit-border-radius: 8px;
+  box-sizing: border-box;
+  padding: 10px;
+  min-height: 44px;
+  font-size: 14px !important;
+  border: 0;
+  color: #999;
+  padding-left: 30px;
+}
+.inputusername {
+  background: #eee url(../images/username.png) no-repeat 8px 12px;
+}
+.inputpassword {
+  background: #eee url(../images/password.png) no-repeat 8px 12px;
+}
+.btnDangKi {
+    background-color: #217662;
+    cursor: pointer;
+}
+.btnDangKi :hover {
+    background-color:#a98f15;
+}
+.lbthongbao{
+    margin-top: 22px;
+  width: 360px;
+  height: 24px;
+  margin-left: 12px;
+  color: rgb(223, 4, 4);
+}
+.forgot{
+    width:300px;
+    height: 40px;
+    color:#3D6ADF;
+    margin-top: 40px;
+}
+/*----------*/
+.cllblmadonhang1{
+      margin-left: 7%;
+  width: 35%;
+  /* margin-top: 7px; */
+  /* width: 90%; */
+  /*border: 2px solid #456879;
+  border-radius: 10px;*/
+  height: 30px;
+  font-size: 23px;
+  font-weight: bold;
+}
+/*----------------------------- quan ly binh luan---------------------------*/
+.clbtnxoabinhlua{
+      float: left;
+  margin-right: 70px;
+  margin-top: 5px;
+  height: 20px;
+  width: 53px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+}
+.clbtnxoabinhlua:hover{
+     
+  background-color: blue;
+  
+}
+/*-----------------------thêm bình luận----------------------------*/
+.clbtnLuuBinhLuan{
+    float: left;
+  /* margin-right: 44px; */
+  margin-top: 18px;
+  height: 40px;
+  width: 87px;
+  border: 1px solid #9E2323;
+  -webkit-border-radius: 73px;
+  text-align: center;
+  font-weight: bold;
+  background-color: darkseagreen;
+  font-style: oblique;
+  margin-left: 37%;
+}   
+/*-----------------------------sửa bình luận-------------------------*/
+#idlichsuabinhluan{
+    margin-left:275px;
+}
+/*-----------------chi tiết đơn hàng*/
+#idmadonhang1{
+  margin-left: 1%;
+  margin-top: 20px;
+  border-bottom-style: inset;
+}
+#chudh1{
+  width: 20%;
+  float: left;
+  height: 30px;
+  color: blue;
+  font-weight: bold;
+  /* font-size: 20px; */
+  /* border-bottom-style: ridge; */
+}
+.cllblmadonhang1 {
+ margin-left: 1px;
+  /* width: 35%; */
+  /* margin-top: 7px; */
+  /* width: 90%; */
+  /* height: 30px; */
+  font-size: 16px;
+  font-weight: bold;
+}
+/*----------------------thay đổi mật khẩu------------------------------*/
+.clbtncapnhapmk{
+   margin-left: 40%;
+  border-bottom-style: ridge;
+  height: 30px;
+  width: 69px;
+}
+.clbtncapnhapmk:hover{
+    background-color:blue;
+}
